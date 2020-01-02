@@ -73,14 +73,14 @@ class ProjectacrnPullRequest(object):
 
 
     def add_label(self,url,labelName):
-        headers = {"Authorization": "token 33385712d1129cc19d85d63b885fc152815fab94",
+        headers = {"Authorization": "token token_num",
                "Accept": "application/vnd.github.symmetra-preview+json"
                }
         response = self.s.post(url,headers=headers,json={'labels':[labelName]})
         return response.status_code   
 
     def del_label(self,url):
-        headers = {"Authorization": "token 33385712d1129cc19d85d63b885fc152815fab94",
+        headers = {"Authorization": "token token_num",
                "Accept": "application/vnd.github.symmetra-preview+json"
                }
         response = self.s.delete(url,headers=headers)
@@ -462,8 +462,7 @@ class ProjectacrnPullRequest(object):
 if __name__ == '__main__':
     url = ['https://api.github.com/repos/projectacrn/acrn-hypervisor',
            'https://api.github.com/repos/projectacrn/acrn-kernel']
-    projectacrn_pullrequest = ProjectacrnPullRequest('acrnsi', '33385712d1129cc19d85d63b885fc152815fab94')
-    #projectacrn_pullrequest = ProjectacrnPullRequest('ClaudZhang1995', 'zhangyun1995')
+    projectacrn_pullrequest = ProjectacrnPullRequest('ClaudZhang1995', 'zhangyun1995')
     for base_rul in url:
         projectacrn_pullrequest.base_url = base_rul
         projectacrn_pullrequest.projectcarn_merge_rebase()
